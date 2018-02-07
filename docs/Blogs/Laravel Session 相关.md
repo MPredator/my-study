@@ -7,13 +7,13 @@ Laravel Session 相关
 
 我们先来看 PHP 的原生 Session 实现。PHP 初学者，勿喷。。
 
-####Session 是什么
+#### Session 是什么
 自行谷歌或者 Bing。
 
-####PHP 原生 Session 机制
+#### PHP 原生 Session 机制
 这主要涉及三个方面，Session 的生成，回收，存储
 
-#####Session 的生成
+##### Session 的生成
 
 这部分主要见于 PHP 源码，以手头的 PHP7 的源码为例，具体位于 /ext/session/session.c 中的 \*php_session_create_id 方法。 下面为了解释方便，省略部分无用代码。
 
@@ -90,7 +90,7 @@ PHPAPI zend_string *php_session_create_id(PS_CREATE_SID_ARGS) /* {{{ */
 那么，如果用户禁用了 Cookie，PHP 则会自动切换到 URL 重写的模式，比如生成这样的 URL:
 > *http://mikecoder.cn/index.php?SESSIONID=2bd170b3f86523f1b1b60b55ffde0f66*
 
-#####PHP 中 Session 的回收和存储
+##### PHP 中 Session 的回收和存储
 前面说太多了- -，这边简单点。
 
 在 php.ini 中 session.gc_maxlifetime 为 session 设置了生存时间(默认为1440s)。
@@ -110,10 +110,10 @@ session.gc_divisor = 100
 
 说了这么多，似乎PHP 原生的 Session 机制，并没有什么大的问题，而且看上去实现的还算是优雅。那么，为什么 Laravel 需要重新设计一套与原生没有一点联系的 Session 机制？
 
-####Laravel Session 由来
+#### Laravel Session 由来
 详情见[Laravel 开发者的自白](https://github.com/laravel/framework/issues/5416#issuecomment-68366445), 英文不太好，翻译轻喷。大意就是 PHP 原生的 Session 直接写进了请求的头部，没有办法进行修改，这样违背了他们想要达到的封装一切设计理念。
 
-####Laravel Session 产生
+#### Laravel Session 产生
 所以，他们就自己重新开发了一套。 - -。那么，为什么他们需要修改 Session？其实，主要是为了防止 CSRF。通过阅读 Laravel 源码，我们可以看到他的 Session 生成思路：
 
 代码在:*vendor/laravel/framework/src/Illuminate/Session/Store.php*中
@@ -133,7 +133,7 @@ protected function generateSessionId()
 
 有可能我们会发现他超过了sha1的长度，原因也很简单，因为我们开启了 CSRF 中间件。
 
-####那么，如果我们需要在不同的系统中公用 Session 怎么办？
+#### 那么，如果我们需要在不同的系统中公用 Session 怎么办？
 因为 Laravel 的 Session 是不兼容 PHP 的 Session 的。网上常用的说法是通过写一个转换器，或者是解析器来解决。
 
 我这边提供一个思路，就是重写 Laravel 的 Session，将生成 Session ID 直接等同于 PHP 原生的 Session。这个其实挺方便的。不过这就和 Laravel 的设计思路违背了。
