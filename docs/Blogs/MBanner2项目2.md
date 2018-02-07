@@ -159,10 +159,10 @@ public class MBannerLineTest extends TestCase {
 
 这只是在重构代码中，的一小部分。 还有更多的细节请看源码。
 
-####使用方法
+#### 使用方法
 在项目的 app 模块里，总共有两个例子，一个是最简单的使用方式，一个是通过 MBanner，做一个类似微信朋友圈的图片浏览器。
 
-#####SimpleExample.java
+##### SimpleExample.java
 在这个例子中，我们主要使用了如下的几行代码实现了一个简单的 ADBanner:
 
 ```
