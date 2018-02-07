@@ -1,6 +1,8 @@
 Mac 迅雷无法删除任务和新建任务的解决办法
 ===
 
+故事是这样的。
+
 ### 解决办法先上
 找到如下的文件夹:**/Users/$(Your Name)/Library/Application Support/Thunder**,然后删除它。再次重新启动迅雷即可。
 
