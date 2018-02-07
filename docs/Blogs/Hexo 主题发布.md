@@ -16,7 +16,7 @@ Hexo Gandalfr 主题发布
 所以这边也就是修改了下，并且打包上传。因为原作者已经停止继续开发了。
 > ![声明](./images/2017-02-10-1.jpeg)
 
-####安装
+#### 安装
 ```
 # cd to your hexo dir
 npm install
@@ -27,7 +27,7 @@ cp _config.yml.example _config.yml
 # modify the config file by yourself
 ```
 
-####配置
+#### 配置
 ```
 theme: gandalfr
 
@@ -41,7 +41,7 @@ archive_generator:
 1. 注意需要在 hexo 的根目录里加上 hexo-tag-cloud 的依赖，不然，标签云不显示。即 package.json 文件。
 2. 具体的 hexo-tag-cloud 的安装文档可以阅读这: [hexo-tag-cloud](https://github.com/MikeCoder/hexo-tag-cloud).
 
-####效果展示
+#### 效果展示
 
 首页效果:
 > ![首页](./images/2017-02-10-2.jpeg)
