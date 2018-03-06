@@ -20,7 +20,32 @@ Emlog 迁移至 Wordpress
 
 代码不会修改 emlog 原始表结构，所以放心的在线上执行，毕竟如果是迁移，Wordpress 的库内容是无足轻重的。并且，我相信各位都是可以成功看到 GIST 的。
 
-不过总体而言，迁移非常的成功。剩下的 https，资源文件，域名，postId 保持一致，则都是体力活了。至此，基本上所有的配置已经完成。现在的主要任务又变成了，如何快速的了解 Wordpress 的代码结构。同时争取成为 Wordpress 的开发者。
+不过总体而言，迁移非常的成功。剩下的 https，资源文件，域名，postId 保持一致，则都是体力活了。
+
+本来以为一切都已经搞定了，可是，我去 google 搜了一下我的博客，发现他的 url 为 `https://mikecoder.cn/post/{postId}`，然后看看其他人引用我博客的时候的 url 则是 `https://mikecoder.cn/?post={postId}`。
+
+不管是哪一种，WP 都没有默认的支持，前者比较好办，直接在后台进行修改就好，修改默认的链接为 `/post/%postId%/` 即可，后者则是比较麻烦。因为不太想修改 Wordpress 的源码（不太清楚有多少地方需要修改）。想了一会，最后确定添加 NGINX 重写规则的方案（还好会一点 NGINX）。
+
+添加注释中的代码即可。将 `?post=(\d+)` 的请求全都重定向到 WP 识别的请求上。
+
+```
+    error_page 404 = https://mikecoder.cn/404;
+    # ==================================
+    if ($args ~* post=(\d+)) {
+        set $args '';
+        set $id $1;
+        rewrite ^ http://mikecoder.cn/?p=$id;
+    }
+    # ==================================
+    root /home/wp/wordpress;
+    index index.html index.htm index.php;
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+        index index.php;
+    }
+```
+
+至此，基本上所有的配置已经完成。现在的主要任务又变成了，如何快速的了解 Wordpress 的代码结构。同时争取成为 Wordpress 的开发者。
 
 最后感慨下，Wordpress 确实是做的最完善的一个博客系统。
 
