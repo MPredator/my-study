@@ -29,20 +29,34 @@ Emlog 迁移至 Wordpress
 添加注释中的代码即可。将 `?post=(\d+)` 的请求全都重定向到 WP 识别的请求上。
 
 ```
-    error_page 404 = https://mikecoder.cn/404;
-    # ==================================
-    if ($args ~* post=(\d+)) {
-        set $args '';
-        set $id $1;
-        rewrite ^ http://mikecoder.cn/?p=$id;
-    }
-    # ==================================
-    root /home/wp/wordpress;
+server {
+    listen 443;
+    server_name www.mikecoder.cn mikecoder.cn;
+
+    ...
+
     index index.html index.htm index.php;
+
     location / {
+        #=====================================================
+        if ($args ~* post=(\d+)) {
+            set $args '';
+            set $id $1;
+            rewrite ^ http://mikecoder.cn/post/$id;
+        }
+        #=====================================================
         try_files $uri $uri/ /index.php?$query_string;
         index index.php;
     }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
 ```
 
 至此，基本上所有的配置已经完成。现在的主要任务又变成了，如何快速的了解 Wordpress 的代码结构。同时争取成为 Wordpress 的开发者。
