@@ -5,7 +5,7 @@
 
 所以，为了避免以上的悲剧不再发生，就开始了这个项目组。那么，这个项目和 AES 加密有什么关系呢。其实，我的计划里，并没有关系。但是，在写爬虫爬取各个网站上的 Proxy 的时候，遇到了这么个情况。有些网站本身也是通过提供 VPS 盈利的，所以他们会在前端显示的时候，做一些加密处理。
 
-比如: [http://www.site-digger.com/html/articles/20110516/proxieslist.html](http://www.site-digger.com/html/articles/20110516/proxieslist.html)
+比如: [www.site-digger.com/html/articles/20110516/proxieslist.html](http://www.site-digger.com/html/articles/20110516/proxieslist.html)
 
 当时，我很简单的以为，他和其他的网站一样，直接脱光了等我爬。想都没想，直接通用爬虫上去爬。发现结果是空。就很奇怪啊。然后就看了他的源码:
 
