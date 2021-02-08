@@ -1,7 +1,7 @@
 hexo-blog-encrypt 在 http 环境下无法使用的原因分析
 ---
 
-###背景
+### 背景
 hexo-blog-encrypt 是一个用来加密 hexo 博文的插件, 其核心的技术点就是在 hexo 渲染时将原文进行 AES 加密, 然后在展示的时候使用密码进行解密. 从原理上看, 并不会存在 http 无法使用而 https 可以使用的限制. 但是, 最近有很多的 issue 都指向了这个奇怪的现象, 以下是几个典型的 issues:
 
 + [issue 129 - https://github.com/D0n9X1n/hexo-blog-encrypt/issues/129](https://github.com/D0n9X1n/hexo-blog-encrypt/issues/129)
@@ -12,7 +12,7 @@ hexo-blog-encrypt 是一个用来加密 hexo 博文的插件, 其核心的技术
 
 以至于在 #166 中, 有人提出了继续支持 http 的建议. 当然, 本着让互联网更安全的愿景, 在 http 上我是不会让步的.
 
-###调查
+### 调查
 一开始有人爆出这个问题的时候,他的博客是属于 http/https 混用的,理所当然的, 我就简单的把问题锁定在 Chrome 不再支持加载 http/https 混合资源的原因上. 但是, 后来有人又爆出来,全 http 的网站也同样无法使用, 而且还很神奇的是火狐可行, Chrome 失败.(这里还是可以看出火狐简直业界清流).于是在网友的帮助下,我们找到了如下的几段分析:
 
 ```
