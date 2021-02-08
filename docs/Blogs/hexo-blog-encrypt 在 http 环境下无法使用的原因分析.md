@@ -18,7 +18,7 @@ hexo-blog-encrypt 是一个用来加密 hexo 博文的插件, 其核心的技术
 > 大概率是因为 Chrome 已经开始阻止页面加载 http 资源.
 > 英文版新闻: Google Chrome Will Block Mixed Content
 > 中文版新闻: Chrome 将不再允许 https:// 页面加载 HTTP 资源
-
+>
 > > @D0n9X1n 作者你好, 很感谢你的插件, 写的很好, 也感谢维护和回答提问. 不过关于这个大家频繁反馈的报错问题
 > > 我觉得您的推测可能不是很对. 有以下几个原因, 我也自己亲测验证了一下:
 > > 1.  首先就是 Chrome 只是默认禁止了 https 的页面加载 http 资源, 但是并没有限制 http 页面加载 http/https 资源. 否则无数内网/或者早些的网站都没法访问了.
@@ -28,10 +28,9 @@ hexo-blog-encrypt 是一个用来加密 hexo 博文的插件, 其核心的技术
 > > 
 > > 虽然看起来最后把站点切换为 https 解决了问题, 但是这看上去像是歪打正着的感觉, 有些原因网站无法https化的情况, 或者内网ip部署的情况下, 还是希望有人能提供一个解决方案, 或者有一个可供 http 使用的版本来兼容使用.
 > > 再次感谢作者的付出, 也希望给其他希望搞清根本原因的同学一点参考
-
+> >
 > > > 这个是浏览器自带的功能, 不需要任何外部加载, 唯一的原因就是 This feature is available only in secure contexts (HTTPS).
 > > > 而 localhost 能正常解密的原因是, localhost 加载的相当于是本地界面, 对于浏览器来说是无条件信任的
-```
 
 可以看到,网友还是非常的给力, 瞬间定位到了问题的本质.具体可以看 [Stack Overflow - 这个问题回答](https://stackoverflow.com/questions/46468104/how-to-use-subtlecrypto-in-chrome-window-crypto-subtle-is-undefined).
 
