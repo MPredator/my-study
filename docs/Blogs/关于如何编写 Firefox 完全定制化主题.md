@@ -12,7 +12,7 @@
 + 进入 about:config 页面
 + 搜索 `toolkit.legacyUserProfileCustomizations.stylesheets` 并将其设置为 true (双击)
 + 完成后如下图所示:
-> ![Firefox settings](./images/firefox settings.jpg)
+> ![Firefox settings](./images/2021-12-26-1.jpg)
 
 #### 打开火狐的 remote debugger
 这一步的目的就是能让我们使用 Web Dev Tools 直接 Debug Firefox 的用户界面.
@@ -21,16 +21,16 @@
 + 点击右上角的 `...` 来打开 Settings
 + 在 Advanced settings 中的 Enable remote debugging 以及 enable browser chrome and add-on debugging toolboxes
 + 完成后如下图所示:
-> ![Firefox remote debugging](./images/Image 2021-12-26 at 1.46 PM.jpg)
+> ![Firefox remote debugging](./images/2021-12-26-2.jpg)
 
 #### 开启 Remote Debugger Console
 一般在进入这一步的时候, 需要重启你的火狐浏览器
 
 + 从右上角的菜单中进入 More Tools -> Browser Tools
 + 完成后如下图所示:
-> ![Firefox remote debug console](./images/Image 2021-12-26 at 1.48 PM.jpg)
+> ![Firefox remote debug console](./images/2021-12-26-3.jpg)
 + 点击 Ok 之后, 就来到了全 Firefox 可用的 Web Dev Tools Console 了.
-> ![Firefox remote active console](./images/Image 2021-12-26 at 1.51 PM.jpg)
+> ![Firefox remote active console](./images/2021-12-26-4.jpg)
 
 之后的故事, 就变了常规的前端开发.
 
@@ -40,7 +40,7 @@
 + 找到自己 Firefox 对应的 Profiles Folder
 + 通过 Help -> More troubleshooting information 来定位自己的 Profile Folder
 + 完成后如下图所示:
-> ![Firefox about:support](./images/Image 2021-12-26 at 1.54 PM.jpg)
+> ![Firefox about:support](./images/2021-12-26-5.jpg)
 + 点击 Show in Finder 然后在该目录下新建一个文件夹 `chrome`
 + 随后在 `chrome` 中新建两个文件 `UserChrome.css` 和 `UserContent.css`
 + 将在上一步中自定义的 css 写入 `UserChrome.css` 中重启火狐即可看到最近的修改.
@@ -53,6 +53,6 @@
 
 #### 修改 Web Dev Tools
 以上的做法只能保证对一般 UI 界面进行. 如果我们想自定义自己的 Web Dev Tools 呢? 比如像这样自定义 Tab 字体与大小:
-> ![Firefox Dev Tools](./images/Image 2021-12-26 at 2.04 PM.jpg)
+> ![Firefox Dev Tools](./images/2021-12-26-6.jpg)
 
 那就又是另个故事了. 不过简单来说, 可以参考 - [**这个项目**](https://github.com/MOSconfig/oh-my-firefox), 来进行编辑属于自己的 Dev Tools.
