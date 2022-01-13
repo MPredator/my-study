@@ -30,15 +30,15 @@ list_display(*(struct list*)(map_find(*(struct map*)val->value, key)->value));
 
 说道 JSON 的解析，其实 JSON 本身的格式非常的简单。按照 官网的说法，状态转换也无外乎以下几种：
 
-> ![Object](http://json.org/object.gif)
+> ![Object](https://www.json.org/img/object.png)
 
-> ![Array](http://json.org/array.gif)
+> ![Array](https://www.json.org/img/array.png)
 
-> ![Value](http://json.org/value.gif)
+> ![Value](https://www.json.org/img/value.png)
 
-> ![String](http://json.org/string.gif)
+> ![String](https://www.json.org/img/string.png)
 
-> ![Number](http://json.org/number.gif)
+> ![Number](https://www.json.org/img/number.png)
 
 相对于细节上，整体看下来的话其实更简单：`{ "key": value }` 和 `[ value ]`，而 value 有可能是 list，和 map 两种数据结构。 而判断就是第一个字符是否是 '[' 或者 '{'。然后就是一个递归向下的解析。
 
